@@ -1,46 +1,51 @@
 import { csrfFetch } from "./csrf";
 
-const SET_USER = "session/setSessionUser";
-const REMOVE_USER = "session/removeSessionUser";
+const SET_USER = "session/setUser";
+const REMOVE_USER = "session/removeUser";
 
-export const setSessionUser = (newSession) => ({
-  type: SET_USER,
-  newSession,
-});
-
-export const removeSessionUser = (session) => {
-  return { type: REMOVE_USER, session };
+const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
+  };
 };
 
-export const loginSetUser = (payload) => async (dispatch) => {
-  const response = csrfFetch("/api/session", {
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  };
+};
+
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
+  const response = await csrfFetch("/api/session", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
   });
-  // console.log(response);
-  const userResponse = await response.json();
-  // console.log(articles);
-  dispatch(setSessionUser(userResponse));
-  return userResponse;
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
 };
 
-const userReducer = (state = {}, action) => {
+const initialState = { user: null };
+
+const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = {
-        ...state,
-        [action.newSession.id]: { id: action.newSession.id },
-      };
+      newState = Object.assign({}, state);
+      newState.user = action.payload;
       return newState;
     case REMOVE_USER:
-      newState = { ...state };
-      delete newState[action.newSession.id];
+      newState = Object.assign({}, state);
+      newState.user = null;
       return newState;
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default sessionReducer;
