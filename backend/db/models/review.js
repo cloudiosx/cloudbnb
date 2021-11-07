@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      homesId: {
+      homeId: {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
