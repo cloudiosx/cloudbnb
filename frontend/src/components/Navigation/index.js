@@ -22,22 +22,20 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">
-          <img
-            className="header__icon"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png"
-            alt=""
-          />
-        </NavLink>
-        <div className="header__center">
-          <input type="text"></input>
-          <FontAwesomeIcon icon="search" />
-        </div>
+    <div className="header">
+      <NavLink exact to="/">
+        <img
+          className="header__icon"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png"
+          alt=""
+        />
+      </NavLink>
+      <div className="header__center">
+        <input type="text"></input>
+        <FontAwesomeIcon icon="search" />
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
