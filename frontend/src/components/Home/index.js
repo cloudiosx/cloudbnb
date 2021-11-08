@@ -23,9 +23,14 @@ function Home() {
       <Banner />
       <div className="home__section">
         {console.log(homes)}
-        <Card />
-        <Card />
-        <Card />
+        {homes.map(({ id, description, title, price }) => (
+          <Card
+            key={id}
+            description={description}
+            title={title}
+            price={price}
+          />
+        ))}
       </div>
       <div className="home__section">
         <Card />
