@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Banner.css";
 
 function Banner() {
+  const [showSearch, setShowSearch] = useState(false);
   return (
     <div className="banner">
       <div className="banner__info">
@@ -13,7 +14,12 @@ function Banner() {
           <button type="button" className="banner__button1">
             <span>Explore Nearby</span>
           </button>
-          <button type="button" className="banner__button2">
+          <button
+            type="button"
+            className="banner__button2"
+            onClick={() => setShowSearch(!showSearch)}
+          >
+            {showSearch && <h1>SHOW DATE PICKER</h1>}
             <span>Search Dates</span>
           </button>
         </div>
