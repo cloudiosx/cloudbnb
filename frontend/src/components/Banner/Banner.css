@@ -8,6 +8,7 @@
   background: url("https://res.cloudinary.com/dbtsjperv/image/upload/v1636361668/Banner_m3tvol.jpg")
     center center;
   background-size: cover;
+  background-position: center;
   height: 50vh;
   position: relative;
 }
@@ -19,7 +20,7 @@
   padding-right: 50px;
   padding-bottom: 40px;
   width: 300px;
-  height: 300px;
+  height: 295px;
 }
 
 .banner__info > h1,
@@ -38,35 +39,36 @@ h5 {
 
 /* Button */
 
-.banner__button {
+.banner__button1 {
   font-family: "Inter", sans-serif;
   font-weight: 700;
   background-color: #ff5a5f;
   color: white;
-  padding: 16px 32px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px 4px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 10px;
   border: none;
 }
-.banner__info > button:hover {
-  background-color: white;
-  color: #ff5a5f;
+
+.banner__button1:hover {
+  background-color: #ff5a5f;
+  color: white;
 }
 
-.banner__button span {
+.banner__button1 span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.banner__button span:after {
+.banner__button1 span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -75,11 +77,62 @@ h5 {
   transition: 0.5s;
 }
 
-.banner__button:hover span {
+.banner__button1:hover span {
   padding-right: 25px;
 }
 
-.banner__button:hover span:after {
+.banner__button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.buttons {
+  display: flex;
+}
+
+.banner__button2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  background-color: white;
+  color: #ff5a5f;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+
+.banner__button2:hover {
+  background-color: white;
+  color: #ff5a5f;
+}
+
+.banner__button2 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.banner__button2 span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.banner__button2:hover span {
+  padding-right: 25px;
+}
+
+.banner__button2:hover span:after {
   opacity: 1;
   right: 0;
 }

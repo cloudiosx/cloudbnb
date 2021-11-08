@@ -9,9 +9,14 @@ function Banner() {
         <h5>
           Plan a different kind of getaway to uncover the hidden gems near you
         </h5>
-        <button type="button" className="banner__button">
-          <span>I'm flexible</span>
-        </button>
+        <div className="buttons">
+          <button type="button" className="banner__button1">
+            <span>Explore Nearby</span>
+          </button>
+          <button type="button" className="banner__button2">
+            <span>Search Dates</span>
+          </button>
+        </div>
       </div>
     </div>
   );
