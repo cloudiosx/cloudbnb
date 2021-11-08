@@ -1,0 +1,7 @@
+.banner {
+  background: url("https://res.cloudinary.com/dbtsjperv/image/upload/v1636361668/Banner_m3tvol.jpg")
+    center center;
+  background-size: cover;
+  height: 50vh;
+  position: relative;
+}
