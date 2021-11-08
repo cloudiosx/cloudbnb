@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Banner.css";
+import DateFormModal from "../DateFormModal";
 
 function Banner() {
   const [showSearch, setShowSearch] = useState(false);
   return (
     <div className="banner">
-      {showSearch && <h1>SHOW DATE PICKER</h1>}
+      {showSearch && <DateFormModal />}
       <div className="banner__info">
         <h1>Get out and stretch your imagination</h1>
         <h5>
