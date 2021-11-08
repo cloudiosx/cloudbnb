@@ -32,9 +32,10 @@ function Navigation({ isLoaded }) {
       </NavLink>
       <div className="header__center">
         <input type="text"></input>
-        <FontAwesomeIcon icon="search" />
-        {isLoaded && sessionLinks}
+        <FontAwesomeIcon icon={["far", "search"]} />
       </div>
+      <div className="header__right">{isLoaded && sessionLinks}</div>
+      <FontAwesomeIcon icon={["fal", "globe"]} />
     </div>
   );
 }

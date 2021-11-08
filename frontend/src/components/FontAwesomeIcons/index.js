@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-// import { faSolid, faMagnifyingGlass } from "@fontawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/pro-regular-svg-icons";
+import { fal } from "@fortawesome/pro-light-svg-icons";
 
-library.add(faSearch);
+library.add(far, fal);
