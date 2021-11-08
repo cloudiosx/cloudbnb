@@ -36,6 +36,8 @@ function Navigation({ isLoaded }) {
       </div>
       <div className="header__right">{isLoaded && sessionLinks}</div>
       <FontAwesomeIcon icon={["fal", "globe"]} />
+      <FontAwesomeIcon icon={["far", "angle-down"]} />
+      <FontAwesomeIcon icon={["fas", "user-circle"]} />
     </div>
   );
 }
