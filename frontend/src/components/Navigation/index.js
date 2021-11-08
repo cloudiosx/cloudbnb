@@ -23,21 +23,25 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="header">
-      <NavLink exact to="/">
-        <img
-          className="header__icon"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png"
-          alt=""
-        />
-      </NavLink>
+      <div className="header__left">
+        <NavLink exact to="/">
+          <img
+            className="logo"
+            src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
+            alt=""
+          />
+        </NavLink>
+      </div>
       <div className="header__center">
         <input type="text"></input>
         <FontAwesomeIcon icon={["far", "search"]} />
       </div>
-      <div className="header__right">{isLoaded && sessionLinks}</div>
-      <FontAwesomeIcon icon={["fal", "globe"]} />
-      <FontAwesomeIcon icon={["far", "angle-down"]} />
-      <FontAwesomeIcon icon={["fas", "user-circle"]} />
+      <div className="header__right">
+        {isLoaded && sessionLinks}
+        <FontAwesomeIcon icon={["fal", "globe"]} />
+        <FontAwesomeIcon icon={["far", "angle-down"]} />
+        <FontAwesomeIcon icon={["fas", "user-circle"]} />
+      </div>
     </div>
   );
 }
