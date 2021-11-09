@@ -56,27 +56,27 @@ function Home() {
           src={images[0]?.url}
           title={homes[0]?.title}
           description={homes[0]?.description}
-          price={homes[0]?.price}
+          price={`$${homes[0]?.price}/ night`}
         />
 
         <Card
           src={images[1]?.url}
           title={homes[1]?.title}
           description={homes[1]?.description}
-          price={homes[1]?.price}
+          price={`$${homes[1]?.price}/ night`}
         />
 
         <Card
           src={images[2]?.url}
           title={homes[2]?.title}
           description={homes[2]?.description}
-          price={homes[2]?.price}
+          price={`$${homes[2]?.price}/ night`}
         />
         <Card
           src={images[3]?.url}
           title={homes[3]?.title}
           description={homes[3]?.description}
-          price={homes[3]?.price}
+          price={`$${homes[3]?.price}/ night`}
         />
       </div>
     </div>
