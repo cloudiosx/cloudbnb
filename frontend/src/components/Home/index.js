@@ -23,20 +23,26 @@ function Home() {
     dispatch(getImages());
   }, [dispatch]);
 
+  const similarityFinder = () => {
+    return homes.map(({ id }) => {
+      console.log("id", id);
+      return images.map(({ homeId, url }) => {
+        console.log("homeId", homeId);
+        if (id === homeId) {
+          console.log("url", url);
+          return url;
+        }
+      });
+    });
+  };
+
   return (
     <div className="home">
       <Banner />
       <div className="home__section">
-        {console.log(homes)}
-        {console.log(images)}
-        {homes.map(({ id, description, title, price }) => (
-          <Card
-            key={id}
-            description={description}
-            title={title}
-            price={price}
-          />
-        ))}
+        {console.log("homes", homes)}
+        {console.log("images", images)}
+        {console.log("similarityFinder", similarityFinder())}
       </div>
       <div className="home__section">
         <Card />
