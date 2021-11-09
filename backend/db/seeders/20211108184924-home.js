@@ -18,6 +18,7 @@ module.exports = {
         {
           userId: 1,
           description: "Hi A",
+          title: "Title A",
           name: "HOUSE A",
           address: "Address A",
           city: "City A",
@@ -30,6 +31,7 @@ module.exports = {
         {
           userId: 2,
           description: "Hi B",
+          title: "Title B",
           name: "HOUSE B",
           address: "Address B",
           city: "City B",
@@ -42,6 +44,7 @@ module.exports = {
         {
           userId: 3,
           description: "Hi C",
+          title: "Title C",
           name: "HOUSE C",
           address: "Address C",
           city: "City C",
