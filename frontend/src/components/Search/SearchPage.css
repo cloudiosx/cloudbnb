@@ -13,7 +13,7 @@
 
 /* Buttons */
 
-.price {
+.button {
   border: solid 1px lightgray;
   font-family: "Inter", sans-serif;
   font-weight: 700;
@@ -28,8 +28,9 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 30px;
+  font-weight: normal;
 }
 
-.price:hover {
+.button:hover {
   border: solid 1px black;
 }
