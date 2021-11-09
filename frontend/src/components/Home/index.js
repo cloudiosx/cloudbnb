@@ -43,6 +43,32 @@ function Home() {
         {console.log("homes", homes)}
         {console.log("images", images)}
         <Card
+          src={
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636470911/matese-fields-pvHma684eEI-unsplash_q38bl7.jpg"
+          }
+          title={"Not sure where to go? Perfect."}
+        />
+        <Card
+          src={
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636470913/benjamin-davies-mqN-EV9rNlY-unsplash_rnt5jr.jpg"
+          }
+          title={"Things to do on your trip"}
+        />
+        <Card
+          src={
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636470905/mathilde-langevin-pGZQ5f-46ic-unsplash_fjjeve.jpg"
+          }
+          title={"Things to do from home"}
+        />
+        <Card
+          src={
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636472151/ryan-mac-kCABKZBt4Gk-unsplash_hxrgdz.jpg"
+          }
+          title={"Get inspiration for your next trip"}
+        />
+      </div>
+      <div className="home__section">
+        <Card
           src={images[0]?.url}
           title={homes[0]?.title}
           description={homes[0]?.description}
@@ -62,11 +88,12 @@ function Home() {
           description={homes[2]?.description}
           price={homes[2]?.price}
         />
-      </div>
-      <div className="home__section">
-        <Card />
-        <Card />
-        <Card />
+        <Card
+          src={images[2]?.url}
+          title={homes[2]?.title}
+          description={homes[2]?.description}
+          price={homes[2]?.price}
+        />
       </div>
     </div>
   );
