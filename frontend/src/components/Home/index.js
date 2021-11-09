@@ -89,10 +89,10 @@ function Home() {
           price={homes[2]?.price}
         />
         <Card
-          src={images[2]?.url}
-          title={homes[2]?.title}
-          description={homes[2]?.description}
-          price={homes[2]?.price}
+          src={images[3]?.url}
+          title={homes[3]?.title}
+          description={homes[3]?.description}
+          price={homes[3]?.price}
         />
       </div>
     </div>
