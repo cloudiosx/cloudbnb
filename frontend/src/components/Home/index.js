@@ -23,26 +23,45 @@ function Home() {
     dispatch(getImages());
   }, [dispatch]);
 
-  const similarityFinder = () => {
-    return homes.map(({ id }) => {
-      console.log("id", id);
-      return images.map(({ homeId, url }) => {
-        console.log("homeId", homeId);
-        if (id === homeId) {
-          console.log("url", url);
-          return url;
-        }
-      });
-    });
-  };
-
+  // const similarityFinder = () => {
+  //   return homes.map(({ id }) => {
+  //     console.log("id", id);
+  //     return images.map(({ homeId, url }) => {
+  //       console.log("homeId", homeId);
+  //       if (id === homeId) {
+  //         console.log("url", url);
+  //         return url;
+  //       }
+  //     });
+  //   });
+  // };
+  // The problem happens where there are more than 1 card used
   return (
     <div className="home">
       <Banner />
       <div className="home__section">
         {console.log("homes", homes)}
         {console.log("images", images)}
-        {console.log("similarityFinder", similarityFinder())}
+        <Card
+          src={images[0]?.url}
+          title={homes[0]?.title}
+          description={homes[0]?.description}
+          price={homes[0]?.price}
+        />
+
+        <Card
+          src={images[1]?.url}
+          title={homes[1]?.title}
+          description={homes[1]?.description}
+          price={homes[1]?.price}
+        />
+
+        <Card
+          src={images[2]?.url}
+          title={homes[2]?.title}
+          description={homes[2]?.description}
+          price={homes[2]?.price}
+        />
       </div>
       <div className="home__section">
         <Card />

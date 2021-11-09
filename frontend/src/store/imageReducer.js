@@ -8,7 +8,6 @@ export const getImages = () => async (dispatch) => {
   const response = await fetch("/api/images");
   // console.log(response);
   const images = await response.json();
-  // console.log(articles);
   dispatch(loadImages(images));
   return images;
 };
