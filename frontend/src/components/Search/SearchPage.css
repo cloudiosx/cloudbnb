@@ -1,0 +1,35 @@
+.searchPage__info {
+  padding: 20px;
+}
+
+.searchPage__info > p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.searchPage__info > h1 {
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+
+.price {
+  border: solid 1px lightgray;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.price:hover {
+  border: solid 1px black;
+}
