@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import "./Navigation.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -21,14 +22,27 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
+    <div className="header">
+      <div className="header__left">
         <NavLink exact to="/">
-          Home
+          <img
+            className="logo"
+            src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
+            alt=""
+          />
         </NavLink>
+      </div>
+      <div className="header__center">
+        <input type="text"></input>
+        <FontAwesomeIcon icon={["far", "search"]} />
+      </div>
+      <div className="header__right">
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+        <FontAwesomeIcon icon={["fal", "globe"]} />
+        <FontAwesomeIcon icon={["far", "angle-down"]} />
+        <FontAwesomeIcon icon={["fas", "user-circle"]} />
+      </div>
+    </div>
   );
 }
 
