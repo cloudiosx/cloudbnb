@@ -62,9 +62,9 @@ function Home() {
         />
         <Card
           src={
-            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636470905/mathilde-langevin-pGZQ5f-46ic-unsplash_fjjeve.jpg"
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636472151/ryan-mac-kCABKZBt4Gk-unsplash_hxrgdz.jpg"
           }
-          title={"Things to do from home"}
+          title={"Get inspiration for your next trip"}
         />
       </div>
       <div className="home__section">
