@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import SearchPage from "./components/Search";
 import Footer from "./components/Footer";
 import "./components/FontAwesomeIcons";
 
@@ -20,12 +21,18 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/search">
+            <SearchPage />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
       )}
-      <Home />
+
       <Footer />
     </>
   );

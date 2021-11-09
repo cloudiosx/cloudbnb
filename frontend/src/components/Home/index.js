@@ -16,26 +16,10 @@ function Home() {
   const images = Object.values(imagesObj);
 
   useEffect(() => {
-    // 5. Dispatch the return value of the thunk creator instead (the thunk)
-    // const thunk = getArticles();
-    // console.log(thunk);
     dispatch(getHomes());
     dispatch(getImages());
   }, [dispatch]);
 
-  // const similarityFinder = () => {
-  //   return homes.map(({ id }) => {
-  //     console.log("id", id);
-  //     return images.map(({ homeId, url }) => {
-  //       console.log("homeId", homeId);
-  //       if (id === homeId) {
-  //         console.log("url", url);
-  //         return url;
-  //       }
-  //     });
-  //   });
-  // };
-  // The problem happens where there are more than 1 card used
   return (
     <div className="home">
       <Banner />
@@ -89,10 +73,10 @@ function Home() {
           price={homes[2]?.price}
         />
         <Card
-          src={images[2]?.url}
-          title={homes[2]?.title}
-          description={homes[2]?.description}
-          price={homes[2]?.price}
+          src={images[3]?.url}
+          title={homes[3]?.title}
+          description={homes[3]?.description}
+          price={homes[3]?.price}
         />
       </div>
     </div>

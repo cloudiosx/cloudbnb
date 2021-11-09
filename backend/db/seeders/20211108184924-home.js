@@ -54,6 +54,19 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 4,
+          description: "Hi D",
+          title: "Title D",
+          name: "HOUSE D",
+          address: "Address D",
+          city: "City D",
+          state: "State D",
+          country: "Country D",
+          price: "5000",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

@@ -33,6 +33,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          homeId: 4,
+          url: "https://res.cloudinary.com/dbtsjperv/image/upload/v1636473673/Screen_Shot_2016-02-09_at_9.08.28_AM.0.0_m7gtd7.jpg",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
