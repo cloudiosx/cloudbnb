@@ -3,6 +3,7 @@ import "./DateFormModal.css";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function DateFormModal() {
   const [startDate, setStartDate] = useState(new Date());
@@ -22,6 +23,19 @@ function DateFormModal() {
   return (
     <div className="search">
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+      <h2>
+        Number of guests
+        <FontAwesomeIcon icon={["far", "user"]} />
+      </h2>
+      <input min={0} defaultValue={2} type="number" />
+      <button
+        type="button"
+        onClick={() => {
+          return console.log("hello world");
+        }}
+      >
+        Search cloudbnb
+      </button>
     </div>
   );
 }

@@ -1,0 +1,46 @@
+.search > h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 559px;
+  padding: 10px;
+  background-color: white;
+}
+
+.search > input {
+  width: 539px;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  height: 30px;
+  top: 420px;
+  border: none;
+}
+
+.search > input:focus {
+  outline-width: 0;
+}
+
+.search > button {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+  top: 480px;
+  text-transform: inherit;
+  background-color: #ff7779;
+  color: white;
+  width: 579px;
+  border: none;
+  height: 50px;
+  font-size: medium;
+  transition: background-color 0.5s;
+}
+
+.search > button:hover {
+  background-color: white;
+  color: #ff7779;
+  border: thin solid #ff7779;
+}
