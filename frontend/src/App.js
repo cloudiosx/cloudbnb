@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
 import "./components/FontAwesomeIcons";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         </Switch>
       )}
       <Home />
+      <Footer />
     </>
   );
 }
