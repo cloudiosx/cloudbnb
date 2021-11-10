@@ -30,13 +30,14 @@ function Navigation({ isLoaded }) {
             src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
             alt=""
           /> */}
+          <FontAwesomeIcon icon={["fal", "house"]} />
           <span id="logo-title">cloudbnb</span>
         </NavLink>
       </div>
-      <div className="header__center">
+      {/* <div className="header__center">
         <input type="text"></input>
         <FontAwesomeIcon icon={["far", "search"]} />
-      </div>
+      </div> */}
       <div className="header__right">
         {isLoaded && sessionLinks}
         <FontAwesomeIcon icon={["fal", "globe"]} />

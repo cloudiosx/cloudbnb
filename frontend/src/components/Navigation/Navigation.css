@@ -10,6 +10,7 @@
   background-color: white;
   z-index: 100;
   width: 100%;
+  padding: 25px 0 25px 0;
 }
 
 .logo {
@@ -22,7 +23,6 @@
   font-size: 25px;
   margin-left: 15px;
   font-weight: 400;
-  text-decoration: none;
 }
 
 #logo-title-container {
@@ -31,6 +31,7 @@
   align-items: center;
   margin-left: 80px;
   color: #ff385c;
+  text-decoration: none;
 }
 
 .header__center {
