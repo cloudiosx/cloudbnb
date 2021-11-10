@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_HOMES = "home/LOADHOMES";
 const CREATE_HOME = "home/CREATEHOME";
+const DELETE_HOME = "home/DELETEHOME";
 
 export const loadHomes = (homes) => {
   return { type: LOAD_HOMES, homes };
@@ -9,6 +10,10 @@ export const loadHomes = (homes) => {
 
 export const createHome = (home) => {
   return { type: CREATE_HOME, home };
+};
+
+export const deleteHome = (home) => {
+  return { type: DELETE_HOME, home };
 };
 
 export const getHomes = () => async (dispatch) => {
@@ -28,6 +33,15 @@ export const createListing = (data) => async (dispatch) => {
   const home = await response.json();
   dispatch(createHome(home));
   return home;
+};
+
+export const deleteListing = (listingId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/homes/${listingId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(deleteHome(listingId));
+  }
 };
 
 const initialState = {};
@@ -54,6 +68,9 @@ const homeReducer = (state = initialState, action) => {
       newState[action.home.id] = action.home;
       return newState;
     // return { ...state, entries: [...action.articles] };
+    case DELETE_HOME:
+      delete state[action.home];
+      return { ...state };
     default:
       return state;
   }
