@@ -12,16 +12,16 @@ export const getImages = () => async (dispatch) => {
   return images;
 };
 
-const initialState = { entries: {}, isLoading: true, likes: 0 };
+const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_IMAGES:
       // console.log(action);
       // Remember to create a new reference to the nested objects in your state
-      const newState = { ...state, entries: { ...state.entries } };
+      const newState = { ...state };
       action.images.forEach((image) => {
-        newState.entries[image.id] = image;
+        newState[image.id] = image;
       });
       return newState;
     // return { ...state, entries: [...action.articles] };

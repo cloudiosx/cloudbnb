@@ -11,4 +11,35 @@ router.get(
   })
 );
 
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const {
+      userId,
+      name,
+      address,
+      city,
+      state,
+      country,
+      price,
+      description,
+      title,
+      imageUrl,
+    } = req.body;
+    const homes = await Home.create({
+      userId,
+      name,
+      address,
+      city,
+      state,
+      country,
+      price,
+      description,
+      title,
+      imageUrl,
+    });
+    res.json(homes);
+  })
+);
+
 module.exports = router;

@@ -16,7 +16,9 @@
 }
 
 .listings__header__buttons {
+  display: flex;
   padding: 20px;
+  justify-content: space-between;
 }
 
 /* Buttons */
