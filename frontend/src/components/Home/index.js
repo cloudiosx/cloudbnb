@@ -12,7 +12,7 @@ function Home() {
   const homesObj = useSelector((state) => state.home);
   const homes = Object.values(homesObj);
 
-  const imagesObj = useSelector((state) => state.image.entries);
+  const imagesObj = useSelector((state) => state.image);
   const images = Object.values(imagesObj);
 
   useEffect(() => {

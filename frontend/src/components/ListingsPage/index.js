@@ -39,6 +39,7 @@ function ListingsPage() {
         {homes.map((home) => (
           <Listing
             key={home.id}
+            id={home.id}
             src={home.imageUrl}
             title={home.title}
             city={home.city}
