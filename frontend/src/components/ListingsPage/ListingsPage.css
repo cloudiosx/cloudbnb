@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  .listings {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.listings {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 150px;
+}

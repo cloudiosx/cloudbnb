@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const dispatch = useDispatch();
 
-  const homesObj = useSelector((state) => state.home.entries);
+  const homesObj = useSelector((state) => state.home);
   const homes = Object.values(homesObj);
 
   const imagesObj = useSelector((state) => state.image.entries);
@@ -24,8 +24,6 @@ function Home() {
     <div className="home">
       <Banner />
       <div className="home__section">
-        {console.log("homes", homes)}
-        {console.log("images", images)}
         <Card
           src={
             "https://res.cloudinary.com/dbtsjperv/image/upload/v1636470911/matese-fields-pvHma684eEI-unsplash_q38bl7.jpg"

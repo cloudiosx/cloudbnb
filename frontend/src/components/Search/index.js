@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 function SearchPage() {
   const dispatch = useDispatch();
 
-  const homesObj = useSelector((state) => state.home.entries);
+  const homesObj = useSelector((state) => state.home);
   const homes = Object.values(homesObj);
 
   const imagesObj = useSelector((state) => state.image.entries);

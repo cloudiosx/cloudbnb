@@ -21,7 +21,7 @@ function Banner() {
           <button
             type="button"
             className="banner__button1"
-            onClick={() => history.push("/search")}
+            onClick={() => history.push("/listings")}
           >
             <span>Explore</span>
           </button>

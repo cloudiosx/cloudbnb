@@ -33,8 +33,15 @@ export const login = (user) => async (dispatch) => {
 export const restoreUser = () => async (dispatch) => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
+  console.log("User's data is", data.user);
   dispatch(setUser(data.user));
   return response;
+
+  // const homeData = await fetch('/api/user/homes', {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+  //   method: 'GET',
+  //   body: 'JSON.stringifty(data.user)'
+  // })
 };
 
 export const signup = (user) => async (dispatch) => {
