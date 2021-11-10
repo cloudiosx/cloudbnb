@@ -35,61 +35,21 @@ function SearchPage() {
           <span>Price</span>
         </button>
       </div>
-      <SearchResult
-        src={images[0]?.url}
-        city={"Fairfield"}
-        title={"Independent luxury studio apartment"}
-        description={
-          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
-        }
-        star={4.73}
-        price={homes[0]?.price}
-        total={"$200 total"}
-      />
-      <SearchResult
-        src={images[1]?.url}
-        city={"Cambridge"}
-        title={"Independent luxury studio apartment"}
-        description={
-          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
-        }
-        star={4.48}
-        price={homes[1]?.price}
-        total={"$200 total"}
-      />
-      <SearchResult
-        src={images[1]?.url}
-        city={"Cambridge"}
-        title={"Independent luxury studio apartment"}
-        description={
-          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
-        }
-        star={4.48}
-        price={homes[1]?.price}
-        total={"$200 total"}
-      />
-      <SearchResult
-        src={images[1]?.url}
-        city={"Cambridge"}
-        title={"Independent luxury studio apartment"}
-        description={
-          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
-        }
-        star={4.48}
-        price={homes[1]?.price}
-        total={"$200 total"}
-      />
-      <SearchResult
-        src={images[1]?.url}
-        city={"Cambridge"}
-        title={"Independent luxury studio apartment"}
-        description={
-          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
-        }
-        star={4.48}
-        price={homes[1]?.price}
-        total={"$200 total"}
-      />
+      {homes.map((home) => (
+        <SearchResult
+          key={home.id}
+          src={home.imageUrl}
+          title={home.title}
+          city={home.city}
+          description={
+            "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+          }
+          star={4.48}
+          state={home.state}
+          price={home.price}
+          total={"$200 total"}
+        />
+      ))}
     </div>
   );
 }
