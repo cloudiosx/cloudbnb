@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./Banner.css";
 import DateFormModal from "../DateFormModal";
 import { Modal } from "../../context/Modal";
+import { useHistory } from "react-router-dom";
 
 function Banner() {
+  const history = useHistory();
   const [showSearch, setShowSearch] = useState(false);
   return (
     <div className="banner">
@@ -16,7 +18,11 @@ function Banner() {
         <h1>Get out and stretch your imagination</h1>
         <h5>You don't have to go far to find a world of wonder</h5>
         <div className="buttons">
-          <button type="button" className="banner__button1">
+          <button
+            type="button"
+            className="banner__button1"
+            onClick={() => history.push("/search")}
+          >
             <span>Explore</span>
           </button>
           <button
