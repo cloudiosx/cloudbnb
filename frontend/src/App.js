@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import SearchPage from "./components/Search";
 import ListingsPage from "./components/ListingsPage";
 import ListingDetails from "./components/ListingDetails";
+import CreateListing from "./components/CreateListing";
 import Footer from "./components/Footer";
 import "./components/FontAwesomeIcons";
 
@@ -23,6 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/createListing">
+            <CreateListing />
+          </Route>
           <Route exact path="/listings">
             <ListingsPage />
           </Route>

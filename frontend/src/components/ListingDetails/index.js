@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import * as sessionActions from "../../store/session";
 import "./ListingDetails.css";
 import { useParams } from "react-router";
 import { getHomes } from "../../store/homeReducer";
@@ -7,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 function ListingDetails() {
   const dispatch = useDispatch();
+
   const { listingId } = useParams();
   const homeObj = useSelector((state) => state.home);
   const specificHome = homeObj[listingId];
@@ -17,13 +19,18 @@ function ListingDetails() {
     (image) => image.homeId === +listingId
   );
 
+  const userDataObj = useSelector((state) => state.session);
+  const userArray = Object.values(userDataObj);
+
   useEffect(() => {
     dispatch(getHomes());
     dispatch(getImages());
+    dispatch(sessionActions.retrieveUser());
   }, [dispatch]);
 
   return (
     <div id="listing-detail-component-container">
+      {console.log(userArray)}
       <div id="listing-detail">
         <ul id="listing-detail-images">
           <li id="mainImage">
