@@ -37,15 +37,58 @@ function SearchPage() {
       </div>
       <SearchResult
         src={images[0]?.url}
-        title={homes[0]?.title}
-        description={homes[0]?.description}
+        city={"Fairfield"}
+        title={"Independent luxury studio apartment"}
+        description={
+          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+        }
+        star={4.73}
         price={homes[0]?.price}
+        total={"$200 total"}
       />
       <SearchResult
         src={images[1]?.url}
-        title={homes[1]?.title}
-        description={homes[1]?.description}
+        city={"Cambridge"}
+        title={"Independent luxury studio apartment"}
+        description={
+          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+        }
+        star={4.48}
         price={homes[1]?.price}
+        total={"$200 total"}
+      />
+      <SearchResult
+        src={images[1]?.url}
+        city={"Cambridge"}
+        title={"Independent luxury studio apartment"}
+        description={
+          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+        }
+        star={4.48}
+        price={homes[1]?.price}
+        total={"$200 total"}
+      />
+      <SearchResult
+        src={images[1]?.url}
+        city={"Cambridge"}
+        title={"Independent luxury studio apartment"}
+        description={
+          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+        }
+        star={4.48}
+        price={homes[1]?.price}
+        total={"$200 total"}
+      />
+      <SearchResult
+        src={images[1]?.url}
+        city={"Cambridge"}
+        title={"Independent luxury studio apartment"}
+        description={
+          "1 guest · 1 bedroom · 1 bed · 1.5 shared bathrooms · Wifi · Kitchen· Free parking · Washing Machine"
+        }
+        star={4.48}
+        price={homes[1]?.price}
+        total={"$200 total"}
       />
     </div>
   );
