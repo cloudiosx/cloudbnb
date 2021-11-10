@@ -13,16 +13,16 @@ export const getHomes = () => async (dispatch) => {
   return homes;
 };
 
-const initialState = { entries: {}, isLoading: true, likes: 0 };
+const initialState = {};
 
 const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_HOMES:
       // console.log(action);
       // Remember to create a new reference to the nested objects in your state
-      const newState = { ...state, entries: { ...state.entries } };
+      const newState = { ...state };
       action.homes.forEach((home) => {
-        newState.entries[home.id] = home;
+        newState[home.id] = home;
       });
       return newState;
     // return { ...state, entries: [...action.articles] };

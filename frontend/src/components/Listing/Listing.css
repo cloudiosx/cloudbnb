@@ -1,0 +1,57 @@
+.listing-card {
+  list-style: none;
+  margin: 0% 1% 2% 1%;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.listing-image {
+  margin: 2%;
+  border-radius: 10px;
+  border: none;
+  object-fit: cover;
+  width: 28em;
+  height: 28em;
+  transition: transform 150ms ease-in;
+}
+
+.listing-image:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+#listing-title {
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+#listing-price {
+  font-weight: 400;
+}
+
+.listing-detail {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .listing-card {
+    flex-direction: column;
+  }
+
+  .listing-details-container {
+    flex-direction: column;
+  }
+
+  .listing-image {
+    /* width: 95%;
+    height: auto; */
+    width: 20em;
+    height: 20em;
+  }
+}

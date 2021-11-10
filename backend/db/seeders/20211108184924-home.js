@@ -17,6 +17,8 @@ module.exports = {
       [
         {
           userId: 1,
+          imageUrl:
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636415740/airbnb-homes-for-inspiration_kbfael.jpg",
           description: "Hi A",
           title: "Title A",
           name: "HOUSE A",
@@ -30,6 +32,8 @@ module.exports = {
         },
         {
           userId: 2,
+          imageUrl:
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636415741/9144ed81-427a-4c36-a3f0-878b55f5465f_ooufqj.webp",
           description: "Hi B",
           title: "Title B",
           name: "HOUSE B",
@@ -43,6 +47,8 @@ module.exports = {
         },
         {
           userId: 3,
+          imageUrl:
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636415741/maryland-airbnb-SOLOAIRBNBS0321_f4thbd.jpg",
           description: "Hi C",
           title: "Title C",
           name: "HOUSE C",
@@ -56,6 +62,8 @@ module.exports = {
         },
         {
           userId: 4,
+          imageUrl:
+            "https://res.cloudinary.com/dbtsjperv/image/upload/v1636473673/Screen_Shot_2016-02-09_at_9.08.28_AM.0.0_m7gtd7.jpg",
           description: "Hi D",
           title: "Title D",
           name: "HOUSE D",
