@@ -18,6 +18,21 @@
   margin-left: 20px;
 }
 
+#logo-title {
+  font-size: 25px;
+  margin-left: 15px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+#logo-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+  color: #ff385c;
+}
+
 .header__center {
   display: flex;
   align-items: center;

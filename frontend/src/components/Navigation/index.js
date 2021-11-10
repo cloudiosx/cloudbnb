@@ -24,12 +24,13 @@ function Navigation({ isLoaded }) {
   return (
     <div className="header">
       <div className="header__left">
-        <NavLink exact to="/">
-          <img
+        <NavLink id="logo-title-container" exact to="/">
+          {/* <img
             className="logo"
             src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
             alt=""
-          />
+          /> */}
+          <span id="logo-title">cloudbnb</span>
         </NavLink>
       </div>
       <div className="header__center">
