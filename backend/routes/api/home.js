@@ -28,7 +28,7 @@ router.post(
   })
 );
 
-router.post(
+router.put(
   "/:listingId(\\d+)/edit",
   asyncHandler(async (req, res) => {
     const listingId = req.params.listingId;
@@ -36,7 +36,7 @@ router.post(
     const updatedHome = req.body;
 
     await home.update(updatedHome);
-    res.status(204).end();
+    res.json(home);
   })
 );
 
