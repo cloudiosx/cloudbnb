@@ -9,16 +9,19 @@ function EditListing() {
   const dispatch = useDispatch();
 
   const { listingId } = useParams();
+  const homeObj = useSelector((state) => state.home);
+  const specificHome = homeObj[listingId];
+  console.log("specificHome", specificHome);
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [price, setPrice] = useState(1);
-  const [description, setDescription] = useState("");
-  const [title, setTitle] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [name, setName] = useState(specificHome.name);
+  const [address, setAddress] = useState(specificHome.address);
+  const [city, setCity] = useState(specificHome.city);
+  const [state, setState] = useState(specificHome.state);
+  const [country, setCountry] = useState(specificHome.country);
+  const [price, setPrice] = useState(specificHome.price);
+  const [description, setDescription] = useState(specificHome.description);
+  const [title, setTitle] = useState(specificHome.title);
+  const [imageUrl, setImageUrl] = useState(specificHome.imageUrl);
   const sessionUser = useSelector((state) => state.session.user);
 
   const userId = sessionUser?.id;
@@ -39,7 +42,7 @@ function EditListing() {
 
     dispatch(editListing(data, listingId));
 
-    history.push("/listings");
+    history.push(`/listings/${listingId}`);
 
     event.preventDefault();
   };

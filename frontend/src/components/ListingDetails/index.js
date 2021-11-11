@@ -31,7 +31,8 @@ function ListingDetails() {
   const userReview = reviewArray.filter(
     (review) => review.homeId === +listingId
   );
-  console.log("session user is", sessionUser);
+  console.log("reviewObj is", reviewObj);
+  console.log("reviewArray is", reviewArray);
   console.log("user review is", userReview);
 
   const handleDeleteListing = (listingId) => {
@@ -95,7 +96,7 @@ function ListingDetails() {
                 alt=""
               ></img>
             </li>
-            <li id="otherImages">
+            {/* <li id="otherImages">
               {currentImages.map((image, index) => {
                 return (
                   <img
@@ -106,7 +107,7 @@ function ListingDetails() {
                   ></img>
                 );
               })}
-            </li>
+            </li> */}
           </ul>
           <div id="listing-details-container">
             <div id="listing-details">
