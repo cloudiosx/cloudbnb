@@ -45,9 +45,9 @@ export const editListing = (data, listingId) => async (dispatch) => {
     method: "PUT",
     body: JSON.stringify(data),
   });
-  if (response.ok) {
-    dispatch(editHome(listingId));
-  }
+  const updatedHome = await response.json();
+  dispatch(editHome(updatedHome));
+  return updatedHome;
 };
 
 export const deleteListing = (listingId) => async (dispatch) => {
@@ -84,7 +84,8 @@ const homeReducer = (state = initialState, action) => {
       return newState;
     // return { ...state, entries: [...action.articles] };
     case EDIT_HOME:
-      newState = { ...state, [action.home.id]: action.home };
+      newState = { ...state };
+      newState[action.home.id] = action.home;
       return newState;
     case DELETE_HOME:
       delete state[action.home];
