@@ -86,7 +86,6 @@ const homeReducer = (state = initialState, action) => {
     case EDIT_HOME:
       newState = { ...state };
       newState[action.home.id] = action.home;
-      console.log("action.home", action.home);
       return newState;
     case DELETE_HOME:
       delete state[action.home];
