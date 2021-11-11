@@ -11,6 +11,7 @@ import ListingDetails from "./components/ListingDetails";
 import CreateListing from "./components/CreateListing";
 import Footer from "./components/Footer";
 import "./components/FontAwesomeIcons";
+import EditListing from "./components/ListingEditPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path="/listings">
             <ListingsPage />
+          </Route>
+          <Route path="/listings/:listingId/edit">
+            <EditListing />
           </Route>
           <Route path="/listings/:listingId">
             <ListingDetails />

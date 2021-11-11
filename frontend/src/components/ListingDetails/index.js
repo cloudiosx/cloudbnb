@@ -48,6 +48,15 @@ function ListingDetails() {
           <span>Delete</span>
         </button>
       )}
+      {sessionUser?.id === specificHome?.userId && (
+        <button
+          type="button"
+          className="button"
+          onClick={() => history.push(`/listings/${listingId}/edit`)}
+        >
+          <span>Edit</span>
+        </button>
+      )}
       <div id="listing-detail-component-container">
         <div id="listing-detail">
           <ul id="listing-detail-images">

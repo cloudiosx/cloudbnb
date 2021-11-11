@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_HOMES = "home/LOADHOMES";
 const CREATE_HOME = "home/CREATEHOME";
+const EDIT_HOME = "home/EDITHOME";
 const DELETE_HOME = "home/DELETEHOME";
 
 export const loadHomes = (homes) => {
@@ -10,6 +11,10 @@ export const loadHomes = (homes) => {
 
 export const createHome = (home) => {
   return { type: CREATE_HOME, home };
+};
+
+export const editHome = (home) => {
+  return { type: EDIT_HOME, home };
 };
 
 export const deleteHome = (home) => {
@@ -33,6 +38,16 @@ export const createListing = (data) => async (dispatch) => {
   const home = await response.json();
   dispatch(createHome(home));
   return home;
+};
+
+export const editListing = (data, listingId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/homes/${listingId}/edit`, {
+    method: "PUT",
+    body: JSON.stringify(data),
+  });
+  if (response.ok) {
+    dispatch(editHome(listingId));
+  }
 };
 
 export const deleteListing = (listingId) => async (dispatch) => {
@@ -68,6 +83,9 @@ const homeReducer = (state = initialState, action) => {
       newState[action.home.id] = action.home;
       return newState;
     // return { ...state, entries: [...action.articles] };
+    case EDIT_HOME:
+      newState = { ...state, [action.home.id]: action.home };
+      return newState;
     case DELETE_HOME:
       delete state[action.home];
       return { ...state };
