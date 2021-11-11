@@ -12,6 +12,8 @@ import CreateListing from "./components/CreateListing";
 import Footer from "./components/Footer";
 import "./components/FontAwesomeIcons";
 import EditListing from "./components/ListingEditPage";
+import CreateReview from "./components/CreateReview";
+import EditReview from "./components/ReviewEditPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +27,12 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/listings/:listingId/:reviewId/edit">
+            <EditReview />
+          </Route>
+          <Route exact path="/listings/:listingId/createReview">
+            <CreateReview />
+          </Route>
           <Route exact path="/createListing">
             <CreateListing />
           </Route>
