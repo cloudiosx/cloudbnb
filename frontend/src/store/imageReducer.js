@@ -1,4 +1,4 @@
-const LOAD_IMAGES = "listing/LOAD_LISTINGS";
+const LOAD_IMAGES = "home/LOAD_LISTINGS";
 
 export const loadImages = (images) => {
   return { type: LOAD_IMAGES, images };

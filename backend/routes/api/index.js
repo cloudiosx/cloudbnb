@@ -3,6 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const homesRouter = require("./home");
 const imagesRouter = require("./image");
+const reviewsRouter = require("./review");
 
 /*
 
@@ -40,6 +41,7 @@ router.use("/session", sessionRouter);
 router.use("/users", usersRouter);
 router.use("/homes", homesRouter);
 router.use("/images", imagesRouter);
+router.use("/reviews", reviewsRouter);
 // router.post("/test", function (req, res) {
 //   res.json({ requestBody: req.body });
 // });
