@@ -28,15 +28,24 @@ router.post(
   })
 );
 
+router.post(
+  "/:listingId(\\d+)/edit",
+  asyncHandler(async (req, res) => {
+    const listingId = req.params.listingId;
+    const home = await Home.findByPk(listingId);
+    const updatedHome = req.body;
+
+    await home.update(updatedHome);
+    res.status(204).end();
+  })
+);
+
 router.delete(
   "/:listingId(\\d+)",
   asyncHandler(async (req, res, next) => {
     const listingId = req.params.listingId;
     const home = await Home.findByPk(listingId);
-    console.log("home", home);
-    console.log("home's homeId", home.id);
     const image = await Image.findByPk(home.id);
-    console.log("image", image);
     if (home && image) {
       await image.destroy();
       await home.destroy();
