@@ -45,7 +45,7 @@ export const editListing = (data, listingId) => async (dispatch) => {
     method: "PUT",
     body: JSON.stringify(data),
   });
-  const updatedHome = response.json();
+  const updatedHome = await response.json();
   dispatch(editHome(updatedHome));
   return updatedHome;
 };
