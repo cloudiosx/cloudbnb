@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
@@ -19,11 +19,26 @@ function LoginForm() {
     );
   };
 
+  useEffect(() => {
+    const validationErrors = [];
+
+    if (!credential) {
+      validationErrors.push("Please provide a username or email");
+    }
+    if (!password) {
+      validationErrors.push("Please provide a valid password");
+    }
+
+    setErrors(validationErrors);
+  }, [credential, password]);
+
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
+      <ul id="error-list">
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li id="errors" key={idx}>
+            {error}
+          </li>
         ))}
       </ul>
       <label>
@@ -44,7 +59,9 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit" disabled={errors.length > 0}>
+        Log In
+      </button>
     </form>
   );
 }
