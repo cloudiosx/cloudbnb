@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListing } from "../../store/homeReducer";
+import isURL from "validator/es/lib/isURL";
 
 function CreateListing() {
   const history = useHistory();
@@ -16,11 +17,15 @@ function CreateListing() {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [errors, setErrors] = useState([]);
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const userId = sessionUser?.id;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     const data = {
       userId,
       name,
@@ -34,16 +39,48 @@ function CreateListing() {
       imageUrl,
     };
 
-    dispatch(createListing(data));
+    let newHome = await dispatch(createListing(data));
 
-    history.push("/listings");
-
-    event.preventDefault();
+    if (newHome) {
+      history.push("/listings");
+    }
   };
 
-  // useEffect(() => {
-  //   dispatch();
-  // }, [dispatch]);
+  useEffect(() => {
+    const validationErrors = [];
+
+    if (!name) validationErrors.push("Name is required");
+    if (!address) validationErrors.push("Address is required");
+    if (!city) validationErrors.push("City is required");
+    if (!state) validationErrors.push("State is required");
+    if (!country) validationErrors.push("Country is required");
+    if (!description) validationErrors.push("Description is required");
+    if (!title) validationErrors.push("Title is required");
+
+    if (!price) {
+      validationErrors.push("Price is required");
+    } else if (isNaN(price)) {
+      validationErrors.push("Price must be a number");
+    }
+
+    if (!imageUrl) {
+      validationErrors.push("Main image is required");
+    } else if (!isURL(imageUrl)) {
+      validationErrors.push("Main image url is invalid");
+    }
+
+    setErrors(validationErrors);
+  }, [
+    name,
+    address,
+    city,
+    state,
+    country,
+    description,
+    title,
+    price,
+    imageUrl,
+  ]);
 
   return (
     <>
@@ -130,8 +167,14 @@ function CreateListing() {
             required
           />
         </label>
-
-        <button>Submit</button>
+        <ul className="error-list">
+          {errors.map((error) => (
+            <li className="errors" key={error}>
+              {error}
+            </li>
+          ))}
+        </ul>
+        <button disabled={errors.length > 0}>Submit</button>
       </form>
     </>
   );
