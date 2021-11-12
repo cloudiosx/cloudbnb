@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import { deleteListing } from "../../store/homeReducer";
 import { getReviews } from "../../store/reviewReducer";
 import { deleteListingReview } from "../../store/reviewReducer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ListingDetails() {
   const dispatch = useDispatch();
@@ -54,19 +55,6 @@ function ListingDetails() {
 
   return (
     <>
-      {
-        <button
-          type="button"
-          className="button"
-          onClick={() =>
-            sessionUser
-              ? history.push(`/listings/${listingId}/createReview`)
-              : history.push("/")
-          }
-        >
-          <span>Create review</span>
-        </button>
-      }
       {sessionUser?.id === specificHome?.userId && (
         <button
           type="button"
@@ -89,12 +77,47 @@ function ListingDetails() {
         <div id="listing-detail">
           <ul id="listing-detail-images">
             <li id="mainImage">
-              <p className="listing-name">{specificHome?.name}</p>
+              <p className="listing-name">{specificHome?.title}</p>
+              <div className="listing-name-subtext-review">
+                <FontAwesomeIcon icon={["far", "star"]} />
+                <p className="listing-name-subtext-review-detailA">4.67</p>
+                <p className="listing-name-subtext-review-detailB">
+                  (15 reviews) · {specificHome?.city}, {specificHome?.state},{" "}
+                  {specificHome?.country}
+                </p>
+              </div>
               <img
                 src={specificHome?.imageUrl}
                 id="listing-detail-image"
                 alt=""
               ></img>
+              <div id="listing-details-boxA">
+                <p id="listing-detail-name">{specificHome?.name}</p>
+                <p id="listing-detail-description">
+                  {specificHome?.description}
+                </p>
+              </div>
+              <div id="listing-details-boxB">
+                <FontAwesomeIcon className="homeIcon" icon={["fal", "home"]} />
+                <div className="listing-details-boxB-content">
+                  <p id="listing-detail-boxB-name">Entire home</p>
+                  <p id="listing-detail-boxB-description">
+                    You'll have the cottage to yourself
+                  </p>
+                </div>
+              </div>
+              <div id="listing-details-boxC">
+                <FontAwesomeIcon className="homeIcon" icon={["fal", "home"]} />
+                <div className="listing-details-boxB-content">
+                  <p id="listing-detail-boxB-name">Entire home</p>
+                  <p id="listing-detail-boxB-description">
+                    You'll have the cottage to yourself
+                  </p>
+                </div>
+              </div>
+              <div id="listing-details-boxD">
+                <div className="description">{specificHome?.description}</div>
+              </div>
             </li>
             {/* <li id="otherImages">
               {currentImages.map((image, index) => {
@@ -109,7 +132,7 @@ function ListingDetails() {
               })}
             </li> */}
           </ul>
-          <div id="listing-details-container">
+          {/* <div id="listing-details-container">
             <div id="listing-details">
               <h2 id="listing-detail-address">{specificHome?.address}</h2>
               <h2 id="listing-detail-city">
@@ -120,7 +143,7 @@ function ListingDetails() {
             <div id="listing-price">
               <h2 id="listing-detail-price">{specificHome?.price}/night</h2>
             </div>
-          </div>
+          </div> */}
           <div id="review-container">
             {userReview.map((review, index) => {
               return (
@@ -156,6 +179,19 @@ function ListingDetails() {
                 </div>
               );
             })}
+            {
+              <button
+                type="button"
+                className="button"
+                onClick={() =>
+                  sessionUser
+                    ? history.push(`/listings/${listingId}/createReview`)
+                    : history.push("/")
+                }
+              >
+                <span>Create review</span>
+              </button>
+            }
           </div>
         </div>
       </div>
