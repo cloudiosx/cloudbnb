@@ -62,6 +62,15 @@ function LoginForm() {
       <button type="submit" disabled={errors.length > 0}>
         Log In
       </button>
+      <button
+        type="submit"
+        onClick={() => {
+          setCredential("Demo-lition");
+          setPassword("password");
+        }}
+      >
+        Demo
+      </button>
     </form>
   );
 }

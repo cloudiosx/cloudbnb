@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const [navBar, setNavBar] = useState(false);
 
   let sessionLinks;
   if (sessionUser) {
@@ -21,10 +22,26 @@ function Navigation({ isLoaded }) {
     );
   }
 
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setNavBar(true);
+    } else {
+      setNavBar(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeBackground);
+
   return (
-    <div className="header">
+    <div className={navBar ? "header active" : "header"}>
       <div className="header__left">
-        <NavLink id="logo-title-container" exact to="/">
+        <NavLink
+          className={
+            navBar ? "logo-title-container-active" : "logo-title-container"
+          }
+          exact
+          to="/"
+        >
           {/* <img
             className="logo"
             src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
@@ -38,7 +55,7 @@ function Navigation({ isLoaded }) {
         <input type="text"></input>
         <FontAwesomeIcon icon={["far", "search"]} />
       </div> */}
-      <div className="header__right">
+      <div className={navBar ? "header-right-active" : "header-right"}>
         {isLoaded && sessionLinks}
         <FontAwesomeIcon icon={["fal", "globe"]} />
         <FontAwesomeIcon icon={["far", "angle-down"]} />
