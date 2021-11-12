@@ -1,5 +1,6 @@
 #listing-detail-component-container {
-  margin: 150px auto 0 auto;
+  font-family: "Inter", sans-serif;
+  margin: 0 auto 0 auto;
   width: 90vw;
   padding: 20px;
 }
@@ -36,8 +37,22 @@
   text-align: left;
   font-size: 35px;
   font-weight: 400;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #2c3e50;
+}
+
+.listing-name-subtext-review {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.listing-name-subtext-review-detailA {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.listing-name-subtext-review-detailB {
+  color: gray;
 }
 
 #listing-detail-image {
@@ -112,6 +127,69 @@
   object-fit: cover;
   width: 49%;
   height: 49%;
+}
+
+#listing-detail-description {
+  padding-bottom: 40px;
+}
+
+#listing-details-boxA {
+  display: flex;
+  flex-direction: column;
+}
+
+#listing-details-boxB {
+  display: flex;
+  border-top: 1px solid lightgray;
+  padding-top: 40px;
+  width: 60%;
+}
+
+.listing-details-boxB-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.homeIcon {
+  font-size: 20px;
+  width: auto;
+  height: auto;
+}
+
+#listing-detail-boxB-name {
+  padding-bottom: 5px;
+}
+
+#listing-detail-name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#listing-detail-description {
+  color: gray;
+}
+
+#listing-detail-boxB-description {
+  color: lightGray;
+}
+
+#listing-details-boxC {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 60%;
+  border-bottom: 1px solid lightgray;
+}
+
+#listing-details-boxD {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-weight: 100;
+  width: 60%;
+  border-bottom: 1px solid lightgray;
 }
 
 @media screen and (max-width: 768px) {

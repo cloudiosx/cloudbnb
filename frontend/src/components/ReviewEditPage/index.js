@@ -5,19 +5,21 @@ import { useHistory } from "react-router-dom";
 import { editListingReview } from "../../store/reviewReducer";
 
 function EditReview() {
+  const { listingId, reviewId } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [review, setReview] = useState("");
+  const reviewObj = useSelector((state) => state.review);
+  const specificReview = reviewObj[listingId];
+
+  const [review, setReview] = useState(specificReview.review);
   const sessionUser = useSelector((state) => state.session.user);
   const userId = sessionUser?.id;
-
-  const { listingId, reviewId } = useParams();
 
   const handleSubmit = (event) => {
     const data = {
       userId,
-      homeId: listingId,
+      homeId: +listingId,
       review,
     };
 

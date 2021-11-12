@@ -7,10 +7,16 @@
   /* Stick to the top */
   position: sticky;
   top: 0;
-  background-color: white;
+  background: transparent;
   z-index: 100;
   width: 100%;
   padding: 25px 0 25px 0;
+}
+
+.header.active {
+  background: white;
+  color: #ff385c;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -26,12 +32,21 @@
   font-family: "Inter", sans-serif;
 }
 
-#logo-title-container {
+.logo-title-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 80px;
   color: #ff385c;
+  text-decoration: none;
+}
+
+.logo-title-container-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+  color: black;
   text-decoration: none;
 }
 
@@ -56,11 +71,22 @@
   outline-width: 0;
 }
 
-.header__right {
+.header-right-active {
   display: flex;
   align-items: center;
 
   justify-content: space-between;
   width: 15vw;
   margin-right: 80px;
+  color: black;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+  width: 15vw;
+  margin-right: 80px;
+  color: #ff385c;
 }
