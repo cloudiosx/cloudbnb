@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -9,28 +9,37 @@ function CreateReview() {
   const dispatch = useDispatch();
 
   const [review, setReview] = useState("");
+  const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
   const userId = sessionUser?.id;
 
   const { listingId } = useParams();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     const data = {
       userId,
       homeId: listingId,
       review,
     };
 
-    dispatch(createListingReview(data));
+    let newReview = await dispatch(createListingReview(data));
 
-    history.push(`/listings/${listingId}`);
-
-    event.preventDefault();
+    if (newReview) {
+      history.push(`/listings/${listingId}`);
+    }
   };
 
-  // useEffect(() => {
-  //   dispatch();
-  // }, [dispatch]);
+  useEffect(() => {
+    const validationErrors = [];
+
+    if (review.length < 1) {
+      validationErrors.push("Review is required");
+    }
+
+    setErrors(validationErrors);
+  }, [review]);
 
   return (
     <>
@@ -38,14 +47,21 @@ function CreateReview() {
         <h1>Create Listing</h1>
         <label>
           Review:
-          <input
+          <textarea
             name="review"
             value={review}
             onChange={(e) => setReview(e.target.value)}
             required
-          />
+          ></textarea>
         </label>
-        <button>Submit</button>
+        <ul id="error-list">
+          {errors.map((error) => (
+            <li id="errors" key={error}>
+              {error}
+            </li>
+          ))}
+        </ul>
+        <button disabled={errors.length > 0}>Submit</button>
       </form>
     </>
   );
