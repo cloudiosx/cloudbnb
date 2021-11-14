@@ -22,26 +22,10 @@ function Navigation({ isLoaded }) {
     );
   }
 
-  const changeBackground = () => {
-    if (window.scrollY >= 80) {
-      setNavBar(true);
-    } else {
-      setNavBar(false);
-    }
-  };
-
-  window.addEventListener("scroll", changeBackground);
-
   return (
-    <div className={navBar ? "header active" : "header"}>
+    <div className="header">
       <div className="header__left">
-        <NavLink
-          className={
-            navBar ? "logo-title-container-active" : "logo-title-container"
-          }
-          exact
-          to="/"
-        >
+        <NavLink className="logo-title-container" exact to="/">
           {/* <img
             className="logo"
             src="https://res.cloudinary.com/dbtsjperv/image/upload/v1636358178/cloudbnb-logos_transparent_rd1vck.png"
@@ -55,12 +39,7 @@ function Navigation({ isLoaded }) {
         <input type="text"></input>
         <FontAwesomeIcon icon={["far", "search"]} />
       </div> */}
-      <div className={navBar ? "header-right-active" : "header-right"}>
-        {isLoaded && sessionLinks}
-        <FontAwesomeIcon icon={["fal", "globe"]} />
-        <FontAwesomeIcon icon={["far", "angle-down"]} />
-        <FontAwesomeIcon icon={["fas", "user-circle"]} />
-      </div>
+      <div className="header-right">{isLoaded && sessionLinks}</div>
     </div>
   );
 }
