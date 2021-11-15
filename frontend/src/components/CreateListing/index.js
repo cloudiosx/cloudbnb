@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { createListing } from "../../store/homeReducer";
 import isURL from "validator/es/lib/isURL";
 
-function CreateListing() {
+function CreateListing({ onClose }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -23,30 +23,7 @@ function CreateListing() {
 
   const userId = sessionUser?.id;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const data = {
-      userId,
-      name,
-      address,
-      city,
-      state,
-      country,
-      price,
-      description,
-      title,
-      imageUrl,
-    };
-
-    let newHome = await dispatch(createListing(data));
-
-    if (newHome) {
-      history.push("/listings");
-    }
-  };
-
-  useEffect(() => {
+  const validateForm = () => {
     const validationErrors = [];
 
     if (!name) validationErrors.push("Name is required");
@@ -70,103 +47,136 @@ function CreateListing() {
     }
 
     setErrors(validationErrors);
-  }, [
-    name,
-    address,
-    city,
-    state,
-    country,
-    description,
-    title,
-    price,
-    imageUrl,
-  ]);
+
+    return validationErrors.length;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    onClose();
+
+    if (validateForm() > 0) return;
+
+    const data = {
+      userId,
+      name,
+      address,
+      city,
+      state,
+      country,
+      price,
+      description,
+      title,
+      imageUrl,
+    };
+
+    let newHome = await dispatch(createListing(data));
+
+    if (newHome) {
+      history.push("/listings");
+    }
+  };
+
+  // useEffect(() => {
+
+  // }, [
+  //   name,
+  //   address,
+  //   city,
+  //   state,
+  //   country,
+  //   description,
+  //   title,
+  //   price,
+  //   imageUrl,
+  // ]);
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <h1>Create Listing</h1>
-        <label>
-          Name:
+        <div class="field-group">
+          <label>Name:</label>
           <input
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Address:
+        </div>
+        <div class="field-group">
+          <label>Address:</label>
           <input
             name="address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             required
           />
-        </label>
-        <label>
-          City:
+        </div>
+        <div class="field-group">
+          <label>City:</label>
           <input
             name="City"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
           />
-        </label>
-        <label>
-          State:
+        </div>
+        <div class="field-group">
+          <label>State:</label>
           <input
             name="State"
             value={state}
             onChange={(e) => setState(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Country:
+        </div>
+        <div class="field-group">
+          <label>Country:</label>
           <input
             name="Country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Price:
+        </div>
+        <div class="field-group">
+          <label>Price:</label>
           <input
             name="Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Description:
+        </div>
+        <div class="field-group">
+          <label>Description:</label>
           <input
             name="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Title:
+        </div>
+        <div class="field-group">
+          <label>Title:</label>
           <input
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Image URL:
+        </div>
+        <div class="field-group">
+          <label>Image URL:</label>
           <input
             name="imageUrl"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             required
           />
-        </label>
+        </div>
         <ul className="error-list">
           {errors.map((error) => (
             <li className="errors" key={error}>
@@ -174,7 +184,9 @@ function CreateListing() {
             </li>
           ))}
         </ul>
-        <button disabled={errors.length > 0}>Submit</button>
+        <div class="single-button">
+          <button>Submit</button>
+        </div>
       </form>
     </>
   );

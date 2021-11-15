@@ -15,8 +15,35 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
+  const validateForm = () => {
+    const validationErrors = [];
+
+    if (!email) {
+      validationErrors.push("Please provide a email");
+    }
+
+    if (!username) {
+      validationErrors.push("Please provide an username");
+    }
+
+    if (!password) {
+      validationErrors.push("Please provide a valid password");
+    }
+
+    if (!confirmPassword) {
+      validationErrors.push("Please confirm your password");
+    }
+
+    setErrors(validationErrors);
+
+    return validationErrors.length;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (validateForm() > 0) return;
+
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
@@ -33,48 +60,52 @@ function SignupFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div class="field-group">
+        <label> Email</label>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          // required
+        />
+      </div>
+      <div class="field-group">
+        <label> Username</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          // required
+        />
+      </div>
+
+      <div class="field-group">
+        <label>Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          // required
+        />
+      </div>
+
+      <div class="field-group">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          // required
+        />
+      </div>
+      <div class="single-button">
+        <button type="submit">Sign Up</button>
+      </div>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
     </form>
   );
 }

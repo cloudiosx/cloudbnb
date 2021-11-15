@@ -11,7 +11,6 @@ function EditListing() {
   const { listingId } = useParams();
   const homeObj = useSelector((state) => state.home);
   const specificHome = homeObj[listingId];
-  console.log("specificHome", specificHome);
 
   const [name, setName] = useState(specificHome.name);
   const [address, setAddress] = useState(specificHome.address);
@@ -53,92 +52,95 @@ function EditListing() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1>Edit Listing</h1>
-        <label>
-          Name:
-          <input
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Address:
-          <input
-            name="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          City:
-          <input
-            name="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          State:
-          <input
-            name="State"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Country:
-          <input
-            name="Country"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Price:
-          <input
-            name="Price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Description:
-          <input
-            name="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Title:
-          <input
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Image URL:
-          <input
-            name="imageUrl"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            required
-          />
-        </label>
-
-        <button>Submit</button>
-      </form>
+      <div className="edit-form-page ">
+        <form onSubmit={handleSubmit}>
+          <h1>Edit Listing</h1>
+          <div className="field-group">
+            <label>Name:</label>
+            <input
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Address:</label>
+            <input
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>City:</label>
+            <input
+              name="City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>State:</label>
+            <input
+              name="State"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Country:</label>
+            <input
+              name="Country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Price:</label>
+            <input
+              name="Price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Description:</label>
+            <input
+              name="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Title:</label>
+            <input
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div className="field-group">
+            <label>Image URL:</label>
+            <input
+              name="imageUrl"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              required
+            />
+          </div>
+          <div className="single-button">
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

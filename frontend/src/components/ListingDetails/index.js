@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
 import "./ListingDetails.css";
 import { useParams } from "react-router";
 import { getHomes } from "../../store/homeReducer";
 import { getImages } from "../../store/imageReducer";
+import { Modal } from "../../context/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteListing } from "../../store/homeReducer";
 import { getReviews } from "../../store/reviewReducer";
 import { deleteListingReview } from "../../store/reviewReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CreateReview from "../CreateReview";
 
 function ListingDetails() {
   const dispatch = useDispatch();
@@ -32,9 +34,8 @@ function ListingDetails() {
   const userReview = reviewArray.filter(
     (review) => review.homeId === +listingId
   );
-  console.log("reviewObj is", reviewObj);
-  console.log("reviewArray is", reviewArray);
-  console.log("user review is", userReview);
+
+  const [showReviewModal, setShowReviewModal] = useState(false);
 
   const handleDeleteListing = (listingId) => {
     dispatch(deleteListing(listingId));
@@ -54,7 +55,7 @@ function ListingDetails() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="container">
       {sessionUser?.id === specificHome?.userId && (
         <button
           type="button"
@@ -75,8 +76,8 @@ function ListingDetails() {
       )}
       <div id="listing-detail-component-container">
         <div id="listing-detail">
-          <ul id="listing-detail-images">
-            <li id="mainImage">
+          <div id="listing-detail-images">
+            <div id="mainImage">
               <p className="listing-name">{specificHome?.title}</p>
               <div className="listing-name-subtext-review">
                 <FontAwesomeIcon icon={["far", "star"]} />
@@ -118,7 +119,7 @@ function ListingDetails() {
               <div id="listing-details-boxD">
                 <div className="description">{specificHome?.description}</div>
               </div>
-            </li>
+            </div>
             {/* <li id="otherImages">
               {currentImages.map((image, index) => {
                 return (
@@ -131,7 +132,7 @@ function ListingDetails() {
                 );
               })}
             </li> */}
-          </ul>
+          </div>
           {/* <div id="listing-details-container">
             <div id="listing-details">
               <h2 id="listing-detail-address">{specificHome?.address}</h2>
@@ -146,6 +147,7 @@ function ListingDetails() {
           </div> */}
           <div id="review-container">
             {userReview.map((review, index) => {
+              console.log("----------------------------", index, review);
               return (
                 <div key={index}>
                   {sessionUser?.id === review?.userId &&
@@ -179,23 +181,24 @@ function ListingDetails() {
                 </div>
               );
             })}
-            {
-              <button
-                type="button"
-                className="button"
-                onClick={() =>
-                  sessionUser
-                    ? history.push(`/listings/${listingId}/createReview`)
-                    : history.push("/")
-                }
-              >
-                <span>Create review</span>
-              </button>
-            }
+            <button
+              type="button"
+              className="button"
+              onClick={() =>
+                sessionUser ? setShowReviewModal(true) : history.push("/")
+              }
+            >
+              <span>Create review</span>
+            </button>
+            {showReviewModal && (
+              <Modal onClose={() => setShowReviewModal(false)}>
+                <CreateReview onClose={() => setShowReviewModal(false)} />
+              </Modal>
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

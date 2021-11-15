@@ -40,10 +40,12 @@ export const createListingReview = (data) => async (dispatch) => {
 };
 
 export const editListingReview = (data, reviewId) => async (dispatch) => {
+  console.log("----------------------");
   const response = await csrfFetch(`/api/reviews/${reviewId}/edit`, {
     method: "PUT",
     body: JSON.stringify(data),
   });
+  console.log("----------------------");
   const updatedReview = await response.json();
   dispatch(editReview(updatedReview));
   return updatedReview;

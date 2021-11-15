@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createListingReview } from "../../store/reviewReducer";
+import "./CreateReview.css";
 
-function CreateReview() {
+function CreateReview({ onClose }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -15,8 +16,24 @@ function CreateReview() {
 
   const { listingId } = useParams();
 
+  const validateForm = () => {
+    const validationErrors = [];
+
+    if (review.length < 1) {
+      validationErrors.push("A review is required");
+    }
+
+    setErrors(validationErrors);
+
+    return validationErrors.length;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    onClose();
+
+    if (validateForm() > 0) return;
 
     const data = {
       userId,
@@ -31,29 +48,22 @@ function CreateReview() {
     }
   };
 
-  useEffect(() => {
-    const validationErrors = [];
-
-    if (review.length < 1) {
-      validationErrors.push("Review is required");
-    }
-
-    setErrors(validationErrors);
-  }, [review]);
+  // useEffect(() => {}, [review]);
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h1>Create Listing</h1>
-        <label>
-          Review:
+        <h1>Create Review</h1>
+        <div className="field-group">
+          <label>Review:</label>
           <textarea
             name="review"
             value={review}
             onChange={(e) => setReview(e.target.value)}
-            required
+            // required
           ></textarea>
-        </label>
+        </div>
+
         <ul id="error-list">
           {errors.map((error) => (
             <li id="errors" key={error}>
@@ -61,7 +71,9 @@ function CreateReview() {
             </li>
           ))}
         </ul>
-        <button disabled={errors.length > 0}>Submit</button>
+        <div className="single-button">
+          <button>Submit</button>
+        </div>
       </form>
     </>
   );
