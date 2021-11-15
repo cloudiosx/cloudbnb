@@ -56,32 +56,32 @@ function Home() {
       <div className="home__section">
         <Card
           className="card"
-          src={images[0]?.url}
+          src={homes[0]?.imageUrl}
           title={homes[0]?.title}
-          description={homes[0]?.description}
+          description={homes[0]?.name}
           price={`$${homes[0]?.price}/ night`}
         />
 
         <Card
           className="card"
-          src={images[1]?.url}
+          src={homes[1]?.imageUrl}
           title={homes[1]?.title}
-          description={homes[1]?.description}
+          description={homes[1]?.name}
           price={`$${homes[1]?.price}/ night`}
         />
 
         <Card
           className="card"
-          src={images[2]?.url}
-          title={homes[2]?.title}
-          description={homes[2]?.description}
-          price={`$${homes[2]?.price}/ night`}
+          src={homes[5]?.imageUrl}
+          title={homes[5]?.title}
+          description={homes[5]?.name}
+          price={`$${homes[5]?.price}/ night`}
         />
         <Card
           className="card"
-          src={images[3]?.url}
+          src={homes[3]?.imageUrl}
           title={homes[3]?.title}
-          description={homes[3]?.description}
+          description={homes[3]?.name}
           price={`$${homes[3]?.price}/ night`}
         />
       </div>
