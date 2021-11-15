@@ -56,35 +56,39 @@ function ListingDetails() {
 
   return (
     <div className="container">
-      {sessionUser?.id === specificHome?.userId && (
-        <button
-          type="button"
-          className="button"
-          onClick={() => handleDeleteListing(listingId)}
-        >
-          <span>Delete</span>
-        </button>
-      )}
-      {sessionUser?.id === specificHome?.userId && (
-        <button
-          type="button"
-          className="button"
-          onClick={() => history.push(`/listings/${listingId}/edit`)}
-        >
-          <span>Edit</span>
-        </button>
-      )}
       <div id="listing-detail-component-container">
         <div id="listing-detail">
           <div id="listing-detail-images">
             <div id="mainImage">
-              <p className="listing-name">{specificHome?.title}</p>
+              <div id="mainImage_title_container">
+                <p className="listing-name">{specificHome?.title}</p>
+                <div>
+                  {sessionUser?.id === specificHome?.userId && (
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={() =>
+                        history.push(`/listings/${listingId}/edit`)
+                      }
+                    >
+                      <span>Edit listing</span>
+                    </button>
+                  )}
+                  {sessionUser?.id === specificHome?.userId && (
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={() => handleDeleteListing(listingId)}
+                    >
+                      <span>Delete listing</span>
+                    </button>
+                  )}
+                </div>
+              </div>
               <div className="listing-name-subtext-review">
-                <FontAwesomeIcon icon={["far", "star"]} />
-                <p className="listing-name-subtext-review-detailA">4.67</p>
                 <p className="listing-name-subtext-review-detailB">
-                  (15 reviews) · {specificHome?.city}, {specificHome?.state},{" "}
-                  {specificHome?.country}
+                  {userReview?.length} Reviews · {specificHome?.city},{" "}
+                  {specificHome?.state}, {specificHome?.country}
                 </p>
               </div>
               <img
@@ -103,16 +107,16 @@ function ListingDetails() {
                 <div className="listing-details-boxB-content">
                   <p id="listing-detail-boxB-name">Entire home</p>
                   <p id="listing-detail-boxB-description">
-                    You'll have the cottage to yourself
+                    You'll have the cottage to yourself.
                   </p>
                 </div>
               </div>
               <div id="listing-details-boxC">
                 <FontAwesomeIcon className="homeIcon" icon={["fal", "home"]} />
                 <div className="listing-details-boxB-content">
-                  <p id="listing-detail-boxB-name">Entire home</p>
+                  <p id="listing-detail-boxB-name">Self check-in</p>
                   <p id="listing-detail-boxB-description">
-                    You'll have the cottage to yourself
+                    You can check in with the doorman.
                   </p>
                 </div>
               </div>
@@ -145,42 +149,9 @@ function ListingDetails() {
               <h2 id="listing-detail-price">{specificHome?.price}/night</h2>
             </div>
           </div> */}
-          <div id="review-container">
-            {userReview.map((review, index) => {
-              console.log("----------------------------", index, review);
-              return (
-                <div key={index}>
-                  {sessionUser?.id === review?.userId &&
-                    (console.log("hi a", sessionUser?.id === review?.userId),
-                    (
-                      <button
-                        type="button"
-                        className="button"
-                        onClick={() => handleDeleteReview(review?.id)}
-                      >
-                        <span>Delete</span>
-                      </button>
-                    ))}
-                  {sessionUser?.id === review?.userId &&
-                    (console.log("hi b", sessionUser?.id === review?.userId),
-                    (
-                      <button
-                        type="button"
-                        className="button"
-                        onClick={() =>
-                          history.push(
-                            `/listings/${listingId}/${review?.id}/edit`
-                          )
-                        }
-                      >
-                        <span>Edit</span>
-                      </button>
-                    ))}
-                  <h1 id="review-title">{review.title}</h1>
-                  <p id="review-body">{review.review}</p>
-                </div>
-              );
-            })}
+          {/* <div id="review-container"> */}
+          <div className="review__section">
+            <p id="listing-detail-name">Review Section</p>
             <button
               type="button"
               className="button"
@@ -196,6 +167,44 @@ function ListingDetails() {
               </Modal>
             )}
           </div>
+
+          {userReview.map((review, index) => {
+            console.log("----------------------------", index, review);
+            return (
+              <div key={index}>
+                {sessionUser?.id === review?.userId &&
+                  (console.log("hi b", sessionUser?.id === review?.userId),
+                  (
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={() =>
+                        history.push(
+                          `/listings/${listingId}/${review?.id}/edit`
+                        )
+                      }
+                    >
+                      <span>Edit review</span>
+                    </button>
+                  ))}
+                {sessionUser?.id === review?.userId &&
+                  (console.log("hi a", sessionUser?.id === review?.userId),
+                  (
+                    <button
+                      type="button"
+                      className="button"
+                      onClick={() => handleDeleteReview(review?.id)}
+                    >
+                      <span>Delete review</span>
+                    </button>
+                  ))}
+                <h1 id="review-title">{review.title}</h1>
+                <p id="review-body">{review.review}</p>
+              </div>
+            );
+          })}
+
+          {/* </div> */}
         </div>
       </div>
     </div>
