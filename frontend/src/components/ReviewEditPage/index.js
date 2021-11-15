@@ -3,14 +3,16 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { editListingReview } from "../../store/reviewReducer";
+import "./ReviewEditPage.css";
 
 function EditReview() {
   const { listingId, reviewId } = useParams();
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   const reviewObj = useSelector((state) => state.review);
-  const specificReview = reviewObj[listingId];
+  const specificReview = reviewObj[reviewId];
 
   const [review, setReview] = useState(specificReview.review);
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,7 +25,7 @@ function EditReview() {
       review,
     };
 
-    dispatch(editListingReview(data, reviewId));
+    dispatch(editListingReview(data, +reviewId));
 
     history.push(`/listings/${listingId}`);
 
@@ -36,19 +38,23 @@ function EditReview() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1>Edit Review</h1>
-        <label>
-          Review:
-          <input
-            name="review"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-            required
-          />
-        </label>
-        <button>Submit</button>
-      </form>
+      <div className="edit-form-page">
+        <form onSubmit={handleSubmit}>
+          <h1>Edit Review</h1>
+          <div className="field-group">
+            <label> Review:</label>
+            <input
+              name="review"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+              required
+            />
+          </div>
+          <div className="single-button">
+            <button>Submit</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

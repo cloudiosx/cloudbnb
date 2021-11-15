@@ -9,16 +9,12 @@
   display: block;
 }
 
-.field-group input,
-.field-group textarea {
+.field-group input {
   display: block;
   padding: 8px 15px;
   border-radius: 4px;
   border-color: #c0c0c0;
   width: 100%;
-}
-.field-group textarea {
-  height: 200px;
 }
 
 .field-group label {
@@ -26,21 +22,21 @@
   margin-bottom: 8px;
 }
 
-.single-button {
+.button-group {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
 
-.single-button button {
+.button-group button {
   padding: 7px 12px;
   margin-bottom: 8px;
   background: transparent;
   border: 1px solid #808080;
 }
 
-.single-button button:hover {
+.button-group button:hover {
   border-color: #0d0d0d;
   transition: all 0.5s ease-in-out;
 }

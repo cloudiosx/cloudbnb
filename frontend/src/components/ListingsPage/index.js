@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ListingsPage.css";
 import Listing from "../Listing";
 import { useDispatch, useSelector } from "react-redux";
 import { getHomes } from "../../store/homeReducer";
 import { useHistory } from "react-router-dom";
+import { Modal } from "../../context/Modal";
+import CreateListing from "../CreateListing";
 
 function ListingsPage() {
   const history = useHistory();
@@ -13,6 +15,8 @@ function ListingsPage() {
   const homes = Object.values(homesObj);
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [showCreateListingModal, setShowCreateListingModal] = useState(false);
+
   useEffect(() => {
     dispatch(getHomes());
   }, [dispatch]);
@@ -21,7 +25,7 @@ function ListingsPage() {
     <>
       <div className="listingPage__header__info">
         <div className="listings__header__buttons">
-          <div className="filter__buttons">
+          {/* <div className="filter__buttons">
             <button type="button" className="button">
               <span>Offbeat</span>
             </button>
@@ -37,9 +41,9 @@ function ListingsPage() {
             <button type="button" className="button">
               <span>Beachfront</span>
             </button>
-          </div>
+          </div> */}
           <div className="create__listing">
-            <button
+            {/* <button
               type="button"
               className="button"
               onClick={() =>
@@ -47,7 +51,25 @@ function ListingsPage() {
               }
             >
               <span>Create listing</span>
+            </button> */}
+            <button
+              type="button"
+              className="button"
+              onClick={() =>
+                sessionUser
+                  ? setShowCreateListingModal(true)
+                  : history.push("/")
+              }
+            >
+              <span>Create listing</span>
             </button>
+            {showCreateListingModal && (
+              <Modal onClose={() => setShowCreateListingModal(false)}>
+                <CreateListing
+                  onClose={() => setShowCreateListingModal(false)}
+                />
+              </Modal>
+            )}
           </div>
         </div>
       </div>
