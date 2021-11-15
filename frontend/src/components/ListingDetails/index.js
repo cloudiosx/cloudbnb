@@ -37,13 +37,13 @@ function ListingDetails() {
 
   const [showReviewModal, setShowReviewModal] = useState(false);
 
-  const handleDeleteListing = (listingId) => {
-    dispatch(deleteListing(listingId));
+  const handleDeleteListing = async (listingId) => {
+    await dispatch(deleteListing(listingId));
     history.push("/listings");
   };
 
-  const handleDeleteReview = (reviewId) => {
-    dispatch(deleteListingReview(reviewId));
+  const handleDeleteReview = async (reviewId) => {
+    await dispatch(deleteListingReview(reviewId));
     history.push(`/listings/${listingId}`);
   };
 
