@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Listing({ id, src, title, city, state, price }) {
   return (
     <ul className="listing-card">
-      <Link to={`/listings/${id}`}>
+      <Link className="link" to={`/listings/${id}`}>
         <img src={src} className="listing-image" alt=""></img>
         <li className="listing-detail">
           <h3 className="listing-detail" id="listing-title">

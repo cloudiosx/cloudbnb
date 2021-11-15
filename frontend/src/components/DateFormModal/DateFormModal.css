@@ -1,4 +1,4 @@
-.search > h2 {
+.search > h4 {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   display: flex;
@@ -10,12 +10,12 @@
 }
 
 .search > input {
-  width: 539px;
-  padding: 20px;
+  width: 599px;
+  padding: 30px;
   position: absolute;
   left: 0;
-  height: 30px;
-  top: 420px;
+  height: 20px;
+  top: 430px;
   border: none;
 }
 
@@ -28,11 +28,11 @@
   font-weight: 700;
   position: absolute;
   left: 0;
-  top: 480px;
+  top: 490px;
   text-transform: inherit;
   background-color: #ff7779;
   color: white;
-  width: 579px;
+  width: 599px;
   border: none;
   height: 50px;
   font-size: medium;

@@ -26,11 +26,11 @@ function DateFormModal() {
   return (
     <div className="search">
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
-      <h2>
+      <h4 className="guests">
         Number of guests
         <FontAwesomeIcon icon={["far", "user"]} />
-      </h2>
-      <input min={0} defaultValue={2} type="number" />
+      </h4>
+      <input className="input" min={0} defaultValue={2} type="number" />
       <button type="button" onClick={() => history.push("/search")}>
         Search cloudbnb
       </button>
