@@ -48,9 +48,21 @@ module.exports = (sequelize, DataTypes) => {
   );
   Home.associate = function (models) {
     Home.belongsTo(models.User, { foreignKey: "userId" });
-    Home.hasMany(models.Review, { foreignKey: "homeId" });
-    Home.hasMany(models.Booking, { foreignKey: "homeId" });
-    Home.hasMany(models.Image, { foreignKey: "homeId" });
+    Home.hasMany(models.Review, {
+      foreignKey: "homeId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    Home.hasMany(models.Booking, {
+      foreignKey: "homeId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    Home.hasMany(models.Image, {
+      foreignKey: "homeId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
   return Home;
 };
