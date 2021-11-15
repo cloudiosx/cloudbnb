@@ -14,7 +14,7 @@ function EditReview() {
   const reviewObj = useSelector((state) => state.review);
   const specificReview = reviewObj[reviewId];
 
-  const [review, setReview] = useState(specificReview.review);
+  const [review, setReview] = useState(specificReview?.review);
   const sessionUser = useSelector((state) => state.session.user);
   const userId = sessionUser?.id;
 
