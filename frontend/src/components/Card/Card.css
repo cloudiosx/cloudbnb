@@ -49,6 +49,7 @@ h4 {
   padding: 20px;
   padding-top: 20px;
   border: 1;
+  min-width: 100%;
 }
 
 .card__info > h2 {
@@ -71,7 +72,4 @@ h4 {
   text-align: center;
   font-size: 1.5em;
   padding-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

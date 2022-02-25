@@ -7,6 +7,7 @@ import { getImages } from "../../store/imageReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 function Home() {
+  // Heroku test
   const dispatch = useDispatch();
 
   const homesObj = useSelector((state) => state.home);
